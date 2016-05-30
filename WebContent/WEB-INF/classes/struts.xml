@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<package name="login" namespace="/" extends="struts-default">
+		<action name="registerAction" class="action.CustomerAction" method="register">
+		<result name="SUCCESSREGISTER">/index.jsp</result>
+		<result name="FAILREGISTER">/register.jsp</result>
+		<result name="INPUTNULLVALUE">/register.jsp</result>
+		</action>
+		
+		<action name="loginAction" class="action.CustomerAction" method="login">
+		<result name="SUCCESSLOGIN">/welcome.jsp</result>
+		<result name="FAILLOGIN">/index.jsp</result>
+		<result name="NOTEXIST">/index.jsp</result>
+		<result name="INPUTNULLVALUE">/index.jsp</result>
+		</action>
+		
+		
+	</package>
+</struts>
+
