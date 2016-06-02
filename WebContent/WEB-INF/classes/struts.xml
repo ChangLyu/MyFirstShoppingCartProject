@@ -4,7 +4,7 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<constant name="struts.devMode" value="true" />
-	<package name="login" namespace="/" extends="struts-default">
+	<package name="default" namespace="/" extends="struts-default">
 		<action name="registerAction" class="action.CustomerAction" method="register">
 		<result name="SUCCESSREGISTER">/index.jsp</result>
 		<result name="FAILREGISTER">/register.jsp</result>
@@ -12,11 +12,18 @@
 		</action>
 		
 		<action name="loginAction" class="action.CustomerAction" method="login">
-		<result name="SUCCESSLOGIN">/welcome.jsp</result>
+		<result name="SUCCESSLOGIN" type="redirectAction">
+			<param name="actionName">listallAction</param>
+		</result>
 		<result name="FAILLOGIN">/index.jsp</result>
 		<result name="NOTEXIST">/index.jsp</result>
 		<result name="INPUTNULLVALUE">/index.jsp</result>
 		</action>
+		
+		<action name="listallAction" class="action.ItemAction" method="listall">
+		<result name="SUCCESSLISTALL">/welcome.jsp</result>
+		</action>
+		
 		
 		
 	</package>

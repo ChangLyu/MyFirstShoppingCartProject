@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+
+
+
+<hibernate-mapping>
+   <class name="model.Customer" table="user_information">
+       <id name="userid" type="int" column="user_id">
+        <generator class="increment" />
+        </id>
+      <property name="username" type="string" column="username"/>
+      <property name="password" column="password" type="string"/>
+   </class>
+   
+      <class name="model.SalesItems" table="item_information">
+       <id name="itemId" type="int" column="item_id">
+        <generator class="increment" />
+        </id>
+      <property name="itemName" type="string" column="item_name"/>
+      <property name="itemDescription" column="item_description" type="string"/>
+	  <property name="itemQuantity" column="item_quantity" type="int"/>
+      <property name="itemPictureLink" column="item_picture" type="string"/>
+      <property name="itemPrice" column="item_price" type="float"/>
+   </class>
+</hibernate-mapping>

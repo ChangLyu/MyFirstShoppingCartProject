@@ -11,7 +11,7 @@ import model.Customer;
 public class CustomerDao {
 	
        Session session;
-	
+
 	public String register(Customer customer){
 		
 		if(customer.getUsername().isEmpty()||customer.getPassword().isEmpty()){
@@ -25,7 +25,7 @@ public class CustomerDao {
 			query.setParameter(0,customer.getUsername());	     
 			if(query.list().isEmpty()){
 				session.save(customer);
-	       	  
+	       	    
 				session.getTransaction().commit();
 				session.close(); 
 				return "SUCCESSREGISTER";
