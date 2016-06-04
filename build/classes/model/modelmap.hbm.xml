@@ -25,4 +25,13 @@
       <property name="itemPictureLink" column="item_picture" type="string"/>
       <property name="itemPrice" column="item_price" type="float"/>
    </class>
+
+      <class name="model.ShoppingCart" table="shopping_cart">
+       <id name="shoppingcartid" type="int" column="shopping_cart_id">
+        <generator class="increment" />
+        </id>
+       <property name="userid" type="int" column="user_id"></property>
+      <property name="itemId" type="int" column="item_id"/>
+      <property name="itemNumber" column="item_number" type="int"/>
+     </class>
 </hibernate-mapping>

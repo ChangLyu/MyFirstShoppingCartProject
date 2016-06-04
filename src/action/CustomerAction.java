@@ -15,8 +15,9 @@ import model.Customer;
 
 public class CustomerAction extends ActionSupport implements ModelDriven, SessionAware{
 	private Customer customer=new Customer();
-	private CustomerDao customerdao=new CustomerDao();
 	private Map<String, Object> sessionMap;
+	private CustomerDao customerdao=new CustomerDao();
+
 	//create a result string, so that we can use struts tag in the register page to figure if it is success.
 	private String result="";
 
@@ -45,11 +46,7 @@ public class CustomerAction extends ActionSupport implements ModelDriven, Sessio
 	
 	public String login(){
 		result="";
-	    result=customerdao.login(customer);
-	    //if successfully login, put the customer into the session map. Then in the jsp, we can still see the status of custoerm.
-	    if(result.equals("SUCCESSLOGIN")){
-	    	sessionMap.put("username",customer.getUsername());
-	    }
+	    result=customerdao.login(customer,sessionMap);
 		return result;	      
 		}
 	
@@ -63,12 +60,12 @@ public class CustomerAction extends ActionSupport implements ModelDriven, Sessio
 	public void setResult(String result) {
 		this.result = result;
 	}
-
 	@Override
 	public void setSession(Map<String, Object> sessionMap) {
 		this.sessionMap = sessionMap;
 		
 	}
+
 	
 
 }

@@ -12,16 +12,32 @@
 		</action>
 		
 		<action name="loginAction" class="action.CustomerAction" method="login">
-		<result name="SUCCESSLOGIN" type="redirectAction">
-			<param name="actionName">listallAction</param>
-		</result>
+		<result name="SUCCESSLOGIN">/welcome.jsp</result>
+		<!--  <result name="SUCCESSLOGIN" type="redirectAction">
+			<param name="actionName">listallAction</param>-->		
 		<result name="FAILLOGIN">/index.jsp</result>
 		<result name="NOTEXIST">/index.jsp</result>
 		<result name="INPUTNULLVALUE">/index.jsp</result>
 		</action>
 		
 		<action name="listallAction" class="action.ItemAction" method="listall">
-		<result name="SUCCESSLISTALL">/welcome.jsp</result>
+		<result name="SUCCESSLISTALL">/allitems.jsp</result>
+		</action>
+		
+		<action name="showdetailAction" class="action.ItemAction" method="showdetail">
+		<result name="SUCCESSSHOWDETAIL">/details.jsp</result>
+		</action>
+		
+	    <action name="checkshoppingcartAction" class="action.ShoppingCartAction" method="showcart">
+		<result name="SUCCESSSHOWCART">/myshoppingcart.jsp</result>
+		</action> 
+		
+		<action name="addtocartAction1" class="action.ShoppingCartAction" method="addtocart">
+		    <result name="SUCCESSADD" type="chain"><param name="actionName">addtocartAction2</param></result>
+		</action>
+		
+		<action name="addtocartAction2" class="action.ItemAction" method="decreasequantity">
+		    <result name="SUCCESSDECREASE">/welcome.jsp</result>
 		</action>
 		
 		
