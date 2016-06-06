@@ -11,6 +11,13 @@
 	<h1>welcome to the online shop market!</h1>
 	<hr>
 	Welcome, ${sessionScope.username}!<br>
+
+	<s:if test="result=='FAILADD'" >
+		The quantity of items you want to put in your shopping cart is beyond the left quantity of items!
+	</s:if>
+		<s:if test="result=='SUCCESSDECREASE'" >
+		You have added the item to your shopping cart successfully!
+	</s:if>
 	<a href="checkshoppingcartAction">check my shopping cart.</a><br>
 	<s:action name="listallAction" namespace="/" executeResult="true" />
 	

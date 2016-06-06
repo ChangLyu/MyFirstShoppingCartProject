@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.omg.CORBA.INTERNAL;
+import org.springframework.web.portlet.mvc.ParameterizableViewController;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -16,22 +17,23 @@ public class ItemAction extends ActionSupport implements ModelDriven{
 	List<SalesItems> itemList=new ArrayList<SalesItems>();
 	int itemId;
 	int numberofitems;
-
+    private String result="";
 
 
 	public String listall(){
 		itemList=salesItemsdao.listall(itemList);
 		if(!itemList.isEmpty()){
 		System.out.println(itemList.get(0).getItemName());}
-
-        return "SUCCESSLISTALL";
+        result="SUCCESSLISTALL";
+        return result;
 	}
 
 	public String showdetail(){
 		itemList=salesItemsdao.showdetail(itemId);
 		if(!itemList.isEmpty()){
 		System.out.println(itemList.get(0).getItemName());}
-		return "SUCCESSSHOWDETAIL";
+		result="SUCCESSSHOWDETAIL";
+		return result;
 	}
 	
     public String decreasequantity(){
@@ -39,11 +41,20 @@ public class ItemAction extends ActionSupport implements ModelDriven{
 		 System.out.println("itemaction decreasequantity itemid is"+itemId);
 		 System.out.println("numberofitems is"+numberofitems);
     	
-    	return "SUCCESSDECREASE";
+    	result="SUCCESSDECREASE";
+    	return result;
     	
     }
     
 	
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
+
 	public int getNumberofitems() {
 		return numberofitems;
 	}

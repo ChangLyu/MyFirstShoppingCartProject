@@ -32,7 +32,7 @@ public class CustomerDao {
 				session.save(customer);
 				session.getTransaction().commit();
 				session.close(); 
-                shoppingCartAction.addUser(customer);
+
 
 				return "SUCCESSREGISTER";
 			}else{

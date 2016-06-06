@@ -5,6 +5,27 @@ public class ShoppingCart {
 	private int itemId;
 	private int itemNumber;
 	private int shoppingcartid;
+	private String itemName;
+	private String itemPictureLink;
+	public String getItemName() {
+		return itemName;
+	}
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+	private float itemPrice;
+	public String getItemPictureLink() {
+		return itemPictureLink;
+	}
+	public void setItemPictureLink(String itemPictureLink) {
+		this.itemPictureLink = itemPictureLink;
+	}
+	public float getItemPrice() {
+		return itemPrice;
+	}
+	public void setItemPrice(float itemPrice) {
+		this.itemPrice = itemPrice;
+	}
 	public int getShoppingcartid() {
 		return shoppingcartid;
 	}

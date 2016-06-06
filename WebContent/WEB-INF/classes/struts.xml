@@ -34,13 +34,16 @@
 		
 		<action name="addtocartAction1" class="action.ShoppingCartAction" method="addtocart">
 		    <result name="SUCCESSADD" type="chain"><param name="actionName">addtocartAction2</param></result>
+		    <result name="FAILADD">/welcome.jsp</result>
 		</action>
 		
 		<action name="addtocartAction2" class="action.ItemAction" method="decreasequantity">
 		    <result name="SUCCESSDECREASE">/welcome.jsp</result>
 		</action>
 		
-		
+		<action name="deletefromcartAction" class="action.ShoppingCartAction" method="deletefromcart">
+		    <result name="SUCCESSDELETE" type="redirectAction"><param name="actionName">checkshoppingcartAction</param></result>
+		</action>
 		
 	</package>
 </struts>

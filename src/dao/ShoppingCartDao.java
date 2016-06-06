@@ -13,16 +13,9 @@ import model.ShoppingCart;
 public class ShoppingCartDao {
 	ShoppingCart shoppingCart=new ShoppingCart();
 	Session session;
-	public void addUser(ShoppingCart shoppingcart){
-		 System.out.println(shoppingcart.getUserid()+"shoppingcart id,from dao");
-			session = HibernateUtils.getSessionFactory().openSession();
-			session.beginTransaction();
-		    session.save(shoppingcart);
-			session.getTransaction().commit();
-			session.close(); 
-	}
+	 List<ShoppingCart> list=new ArrayList<ShoppingCart>();
 	public List<ShoppingCart> showcart(int userid){
-		 List<ShoppingCart> list=new ArrayList<ShoppingCart>();
+
 		 session = HibernateUtils.getSessionFactory().openSession();
 		 session.beginTransaction();
 		 System.out.println(userid);
@@ -32,18 +25,21 @@ public class ShoppingCartDao {
  	     return list; 
 	}
 	
-	public void addtocart(int userid, int item_id, int numberofitems){
+	public void addtocart(int userid, int item_id, int numberofitems,String name, float price, String picturelink){
 		 session = HibernateUtils.getSessionFactory().openSession();
 		 session.beginTransaction();
 		 System.out.println("shoppingcart addtocart itemid is "+item_id);
 		 System.out.println("numberofitems is "+numberofitems);
 	     System.out.println("userid is"+userid);
-		 List<ShoppingCart> list=new ArrayList<ShoppingCart>();
+
 		 list= session.createQuery("from ShoppingCart where itemId= :itemid and userid= :userid").setParameter("itemid",item_id).setParameter("userid",userid).list();
 		if(list.isEmpty()){
 			 shoppingCart.setUserid(userid);
 			 shoppingCart.setItemId(item_id);
 			 shoppingCart.setItemNumber(numberofitems);
+			 shoppingCart.setItemName(name);
+			 shoppingCart.setItemPrice(price);
+			 shoppingCart.setItemPictureLink(picturelink);
 			 session.save(shoppingCart);
 			
 		}else{
@@ -54,6 +50,20 @@ public class ShoppingCartDao {
 		}
 	     session.getTransaction().commit();
 	     session.close(); 
+	}
+	
+	public int deletefromcart(int userid, int item_id){
+
+		 session = HibernateUtils.getSessionFactory().openSession();
+		 session.beginTransaction();
+		 System.out.println("shoppingcart delete itemid is "+item_id);
+	     System.out.println("userid is"+userid);
+	      list= session.createQuery("from ShoppingCart where itemId= :itemid and userid= :userid").setParameter("itemid",item_id).setParameter("userid",userid).list();
+		 int  itemnumber=list.get(0).getItemNumber();
+		 session.createQuery("delete from ShoppingCart where itemId= :itemid and userid= :userid").setParameter("itemid",item_id).setParameter("userid",userid).executeUpdate();
+	     session.getTransaction().commit();
+	     session.close(); 
+	     return itemnumber;
 	}
 
 

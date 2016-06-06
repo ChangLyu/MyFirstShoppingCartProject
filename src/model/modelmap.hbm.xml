@@ -32,6 +32,9 @@
         </id>
        <property name="userid" type="int" column="user_id"></property>
       <property name="itemId" type="int" column="item_id"/>
+      <property name="itemName" type="string" column="item_name"/>
+      <property name="itemPictureLink" column="item_picture" type="string"/>
+      <property name="itemPrice" column="item_price" type="float"/>
       <property name="itemNumber" column="item_number" type="int"/>
      </class>
 </hibernate-mapping>

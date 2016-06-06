@@ -50,5 +50,39 @@ public class SalesItemsDao {
 	     session.getTransaction().commit();
 	     session.close(); 
 	}
+	public boolean checkquantity(int item_id, int numberofitems){		 
+		 List<SalesItems> list=new ArrayList<SalesItems>();
+		 session = HibernateUtils.getSessionFactory().openSession();
+		 session.beginTransaction();
+		 list= session.createQuery("from SalesItems where itemId= :id").setParameter("id",item_id).list();
+		 int q=list.get(0).getItemQuantity();
+          if(q>=numberofitems){
+    		  session.getTransaction().commit();
+    		  session.close(); 
+        	  return true;
+          }else{
+    		  session.getTransaction().commit();
+    		  session.close();
+    		  return false;
+          }
+
+	}
+	//when u remove something from your shopping list, u have to restore them in the items list.
+	public void restoreitem(int item_id, int numberofitems){
+		 System.out.println("itemid is"+item_id);
+		 System.out.println("numberofitems is"+numberofitems);
+		 
+		 List<SalesItems> list=new ArrayList<SalesItems>();
+		 session = HibernateUtils.getSessionFactory().openSession();
+		 session.beginTransaction();
+		 list= session.createQuery("from SalesItems where itemId= :id").setParameter("id",item_id).list();
+		 int q=list.get(0).getItemQuantity();
+		  q=q+numberofitems;
+
+		 String hqlUpdate = "update SalesItems s set s.itemQuantity = :quantity where s.itemId = :id";
+		 session.createQuery( hqlUpdate ).setParameter("quantity", q).setParameter("id", item_id ).executeUpdate();
+	     session.getTransaction().commit();
+	     session.close(); 
+	}
 
 }

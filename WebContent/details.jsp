@@ -25,7 +25,6 @@
 				<tr><th>Price:<s:property value="itemPrice"/></th></tr>
 				<tr><th>Quantity:<s:property value="itemQuantity"/></th></tr>
 				<tr><th style="width: 500px;">Story:<s:property value="itemDescription"/></th></tr>
-                <tr><th><a href="<s:url  action="addtocartAction"> <s:param name="itemId" value="%{itemId}" /></s:url>">add to cart</a></th></tr>
 		</s:iterator> 	
 		</tbody>
 	</table>

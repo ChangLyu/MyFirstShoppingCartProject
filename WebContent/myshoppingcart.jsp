@@ -12,30 +12,31 @@
 		<thead>
 			<tr><th colspan="8">This is your shopping cart!</th></tr>
 			<tr>
-				<th>User Id</th>
 				<th>Item Id</th>	
 				<th>Item Number</th>
+				<th>Item Picture</th>
+				<th>Item Name</th>
+				<th>Item Price</th>
 				<th colspan="2">Operations</th>
 				
 			</tr>
 		</thead>
 		<tbody>
-		<s:iterator value="shoppingcart" >
+		<s:iterator value="list" >
 			<tr>
 				<td><s:property value="itemId"/></td>
+				<td><s:property value="itemNumber"/></td>
 				<td><img style="width: 200px;" src="<s:property value="itemPictureLink"/>"/></td>
 				<td><s:property value="itemName"/></td>
 				<td><s:property value="itemPrice"/></td>
-				<td><s:property value="itemQuantity"/></td>
-				<td style="max-width: 10px; white-space: nowrap;overflow: hidden; text-overflow: ellipsis;"><s:property value="itemDescription"/></td>
-
                <td><a href="<s:url  action="showdetailAction"> <s:param name="itemId" value="%{itemId}" /></s:url>">more details</a></td>
-               <td><a href="<s:url  action="addtocartAction"> <s:param name="itemId" value="%{itemId}" /></s:url>">add to cart</a></td>
+               <td><a href="<s:url  action="deletefromcartAction"> <s:param name="itemId" value="%{itemId}" /></s:url>">delete from cart</a></td>
                
 			</tr>
 		</s:iterator> 	
 		</tbody>
 	</table>
+	<a href="welcome.jsp">beck to item list.</a>
 
 </body>
 </html>
