@@ -11,6 +11,13 @@
 		<result name="INPUTNULLVALUE">/register.jsp</result>
 		</action>
 		
+		<action name="managerloginAction" class="action.ManagerAction" method="login">
+		<result name="SUCCESSLOGIN">/managerwelcome.jsp</result>	
+		<result name="FAILLOGIN">/managerlogin.jsp</result>
+		<result name="NOTEXIST">/managerlogin.jsp</result>
+		<result name="INPUTNULLVALUE">/managerlogin.jsp</result>
+		</action>
+		
 		<action name="loginAction" class="action.CustomerAction" method="login">
 		<result name="SUCCESSLOGIN">/welcome.jsp</result>
 		<!--  <result name="SUCCESSLOGIN" type="redirectAction">
@@ -22,6 +29,10 @@
 		
 		<action name="listallAction" class="action.ItemAction" method="listall">
 		<result name="SUCCESSLISTALL">/allitems.jsp</result>
+		</action>
+		
+		<action name="managerlistallAction" class="action.ItemAction" method="listall">
+		<result name="SUCCESSLISTALL">/managerallitems.jsp</result>
 		</action>
 		
 		<action name="showdetailAction" class="action.ItemAction" method="showdetail">
@@ -45,6 +56,21 @@
 		    <result name="SUCCESSDELETE" type="redirectAction"><param name="actionName">checkshoppingcartAction</param></result>
 		</action>
 		
+		<action name="jumptoeditAction" class="action.ItemAction" method="showdetail">
+		<result name="SUCCESSSHOWDETAIL">/edititem.jsp</result>
+		</action>
+		
+		<action name="itemeditAction" class="action.ItemAction" method="edit">
+		<result name="SUCCESSEDITITEM" type="chain"><param name="actionName">jumptoeditAction</param></result>
+		</action>
+		
+		<action name="itemaddAction" class="action.ItemAction" method="add">
+		<result name="SUCCESSADDITEM">/managerwelcome.jsp</result>
+		</action>
+		
+		<action name="itemdeleteAction" class="action.ItemAction" method="delete">
+		<result name="SUCCESSDELETEITEM">/managerwelcome.jsp</result>
+		</action>
 	</package>
 </struts>
 

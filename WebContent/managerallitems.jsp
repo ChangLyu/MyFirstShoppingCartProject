@@ -4,7 +4,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link type="text/css" rel="stylesheet" href="css/stylesheet.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>all items</title>
 </head>
@@ -32,14 +31,14 @@
 				<td><s:property value="itemPrice"/></td>
 				<td><s:property value="itemQuantity"/></td>
 				<td style="max-width: 10px; white-space: nowrap;overflow: hidden; text-overflow: ellipsis;"><s:property value="itemDescription"/></td>
-
-               <td><a class="click" href="<s:url  action="showdetailAction"> <s:param name="itemId" value="%{itemId}" /></s:url>">more details</a></td>
-               <td><s:form action="addtocartAction1"><s:hidden name="itemId" value="%{itemId}" />Number of items you want to put in your shopping cart:<br><input type="text" name="numberofitems"><input type="submit" value="submit"></s:form>
-              <!--  <a href="<s:url  action="addtocartAction1"> <s:param name="itemId" value="%{itemId}" /></s:url>">add to cart</a></td>
-                -->
+                 
+               <td><a class="click" href="<s:url  action="jumptoeditAction"> <s:param name="itemId" value="%{itemId}" /></s:url>">edit</a></td>
+               <td><a class="click" href="<s:url  action="itemdeleteAction"> <s:param name="itemId" value="%{itemId}" /></s:url>">delete</a></td>
 			</tr>
 		</s:iterator> 	
+		     <tr ><td colspan="3"><a class="click" href="additem.jsp">add</a></td></tr>
 		</tbody>
 	</table>
+
 </body>
 </html>

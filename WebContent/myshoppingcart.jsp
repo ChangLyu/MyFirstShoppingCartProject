@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>My shopping cart</title>
+<link type="text/css" rel="stylesheet" href="css/stylesheet.css">
 </head>
 <body>
 <table border="1">
@@ -29,8 +30,8 @@
 				<td><img style="width: 200px;" src="<s:property value="itemPictureLink"/>"/></td>
 				<td><s:property value="itemName"/></td>
 				<td><s:property value="itemPrice"/></td>
-               <td><a href="<s:url  action="showdetailAction"> <s:param name="itemId" value="%{itemId}" /></s:url>">more details</a></td>
-               <td><a href="<s:url  action="deletefromcartAction"> <s:param name="itemId" value="%{itemId}" /></s:url>">delete from cart</a></td>
+               <td><a class="click" href="<s:url  action="showdetailAction"> <s:param name="itemId" value="%{itemId}" /></s:url>">more details</a></td>
+               <td><a class="click" href="<s:url  action="deletefromcartAction"> <s:param name="itemId" value="%{itemId}" /></s:url>">delete from cart</a></td>
                
 			</tr>
 		</s:iterator> 	

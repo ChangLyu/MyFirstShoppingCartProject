@@ -33,6 +33,29 @@ public class SalesItemsDao {
  	     session.close(); 
  	     return list;
 	}
+	public void edit(SalesItems salesItems){
+		 session = HibernateUtils.getSessionFactory().openSession();
+		 session.beginTransaction();
+		 session.update(salesItems);
+	     session.getTransaction().commit();
+	     session.close(); 
+	}
+	//not done
+	public void add(SalesItems salesItems){
+		 session = HibernateUtils.getSessionFactory().openSession();
+		 session.beginTransaction();
+		 session.save(salesItems);
+	     session.getTransaction().commit();
+	     session.close(); 
+	}
+	public void delete(int id){
+		 session = HibernateUtils.getSessionFactory().openSession();
+		 session.beginTransaction();
+		 SalesItems s=(SalesItems)session.get(SalesItems.class,id);
+		 session.delete(s);
+	     session.getTransaction().commit();
+	     session.close(); 
+	}
 	
 	public void decreasequantity(int item_id, int numberofitems){
 		 System.out.println("itemid is"+item_id);

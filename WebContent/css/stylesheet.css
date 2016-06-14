@@ -1,0 +1,16 @@
+@CHARSET "ISO-8859-1";
+
+.click:link{
+	font-family:cursive;
+	
+}
+
+.click:visited{
+	color:violet;	
+}
+
+.click:hover{
+	color: #cc0000;
+	font-weight: bold;
+	
+}

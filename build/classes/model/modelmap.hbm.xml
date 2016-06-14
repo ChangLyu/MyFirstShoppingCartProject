@@ -15,6 +15,14 @@
       <property name="password" column="password" type="string"/>
    </class>
    
+      <class name="model.Manager" table="manager_information">
+       <id name="managerid" type="int" column="manager_id">
+        <generator class="increment" />
+        </id>
+      <property name="managername" type="string" column="manager_name"/>
+      <property name="managerpassword" column="manager_password" type="string"/>
+   </class>
+   
       <class name="model.SalesItems" table="item_information">
        <id name="itemId" type="int" column="item_id">
         <generator class="increment" />

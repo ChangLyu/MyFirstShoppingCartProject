@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link type="text/css" rel="stylesheet" href="css/stylesheet.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>online shop market</title>
 </head>
@@ -18,7 +19,7 @@
 		<s:if test="result=='SUCCESSDECREASE'" >
 		You have added the item to your shopping cart successfully!
 	</s:if>
-	<a href="checkshoppingcartAction">check my shopping cart.</a><br>
+	<a class="click" href="checkshoppingcartAction">check my shopping cart.</a><br>
 	<s:action name="listallAction" namespace="/" executeResult="true" />
 	
 

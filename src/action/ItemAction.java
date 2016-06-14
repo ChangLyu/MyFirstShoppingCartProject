@@ -14,9 +14,10 @@ import model.SalesItems;
 
 public class ItemAction extends ActionSupport implements ModelDriven{
 	SalesItemsDao salesItemsdao=new SalesItemsDao();
+	SalesItems salesItems=new SalesItems();
 	List<SalesItems> itemList=new ArrayList<SalesItems>();
-	int itemId;
-	int numberofitems;
+	int itemId;//this does not need get and set method, because we always use get model to return the model, use the model.get method to get 
+	int numberofitems;//this needs the get and set method, because it is not the property in the model
     private String result="";
 
 
@@ -29,6 +30,7 @@ public class ItemAction extends ActionSupport implements ModelDriven{
 	}
 
 	public String showdetail(){
+		itemId=salesItems.getItemId();
 		itemList=salesItemsdao.showdetail(itemId);
 		if(!itemList.isEmpty()){
 		System.out.println(itemList.get(0).getItemName());}
@@ -36,7 +38,26 @@ public class ItemAction extends ActionSupport implements ModelDriven{
 		return result;
 	}
 	
+	public String edit(){
+        salesItemsdao.edit(salesItems);
+		result="SUCCESSEDITITEM";
+		return result;
+	}
+	public String add(){
+        salesItemsdao.add(salesItems);
+		result="SUCCESSADDITEM";
+		return result;
+	}
+	public String delete(){
+		
+        salesItemsdao.delete(salesItems.getItemId());
+		result="SUCCESSDELETEITEM";
+		return result;
+	}
+	
     public String decreasequantity(){
+		itemList=salesItemsdao.listall(itemList);
+		
     	salesItemsdao.decreasequantity(itemId,numberofitems);
 		 System.out.println("itemaction decreasequantity itemid is"+itemId);
 		 System.out.println("numberofitems is"+numberofitems);
@@ -64,19 +85,11 @@ public class ItemAction extends ActionSupport implements ModelDriven{
 	}
 
 
-
-	public int getItemId() {
-		return itemId;
-	}
-
-	public void setItemId(int itemId) {
-		this.itemId = itemId;
-	}
-
 	@Override
 	public Object getModel() {
 		// TODO Auto-generated method stub
-		return null;
+	return salesItems;
+
 	}
 
 	public SalesItemsDao getSalesItemsdao() {

@@ -27,7 +27,8 @@
 		You have successfully registered, please use your register username and password login.
 	</s:if>
 	
-	<h4>Login:</h4>
+	<h4>UserLogin:</h4>
+	<div><a href="managerlogin.jsp">ManagerLogin</a></div>
 	<form action="loginAction" method="post">
 		<table>
 			<tr>
